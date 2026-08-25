@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Content Clarity Audit — SHMB Digital Marketing</title>
+<meta name="description" content="A full diagnostic of your profile and content, delivered in 5–7 business days as a video walkthrough plus a written report.">
+<link rel="canonical" href="https://shmbmarketing.ca/audit.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #1C1917;
+    --bg-card: #2A2521;
+    --bg-card-2: #322C27;
+    --rose: #C08A7D;
+    --rose-dim: #3D2C27;
+    --sage: #9CA88C;
+    --text: #F3EEE7;
+    --text-dim: #B3A99E;
+    --text-faint: #7A7067;
+    --line: #3A332D;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  .eyebrow {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 12.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 18px;
+    display: block;
+  }
+
+  a { color: var(--rose); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(13,13,13,0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+  .nav-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    color: var(--text-dim);
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+  @media (max-width: 640px) {
+    nav .wrap { flex-direction: column; align-items: flex-start; gap: 12px; padding-top: 14px; padding-bottom: 14px; }
+    .nav-links { gap: 16px; flex-wrap: wrap; }
+    .nav-links a { font-size: 13px; }
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero {
+    padding: 108px 0 96px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero h1 {
+    font-size: clamp(38px, 6vw, 64px);
+    line-height: 1.06;
+    max-width: 780px;
+    margin-bottom: 26px;
+  }
+  .hero h1 span { color: var(--rose); }
+  .hero p.lede {
+    font-size: 18px;
+    color: var(--text-dim);
+    max-width: 560px;
+    margin-bottom: 40px;
+  }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 13px 22px;
+    border-radius: 3px;
+    display: inline-block;
+    border: 1px solid var(--rose);
+  }
+  .btn-fill { background: var(--rose); color: #06120C; }
+  .btn-fill:hover { background: #24B486; text-decoration: none; }
+  .btn-outline { color: var(--rose); }
+  .btn-outline:hover { background: var(--rose-dim); text-decoration: none; }
+
+  /* ---------- SECTION shared ---------- */
+  section { padding: 92px 0; border-bottom: 1px solid var(--line); }
+  section h2 {
+    font-size: clamp(26px, 3.4vw, 36px);
+    max-width: 620px;
+    margin-bottom: 18px;
+  }
+  .section-lede {
+    color: var(--text-dim);
+    max-width: 600px;
+    font-size: 16px;
+    margin-bottom: 56px;
+  }
+
+  /* ---------- OFFER GRID ---------- */
+  .offer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 8px;
+  }
+  .offer-item {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 22px 24px;
+  }
+  .offer-item h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 15.5px;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .offer-item p { color: var(--text-dim); font-size: 14px; }
+  @media (max-width: 640px) { .offer-grid { grid-template-columns: 1fr; } }
+
+  .price-card {
+    background: var(--bg-card);
+    border: 1px solid var(--rose);
+    border-radius: 6px;
+    padding: 36px;
+    margin-top: 8px;
+    max-width: 480px;
+  }
+  .price-card .price-tag {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: var(--rose);
+  }
+  .price-card .price-was {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    color: var(--text-faint);
+    text-decoration: line-through;
+    margin-left: 10px;
+  }
+  .price-card .price-note {
+    color: var(--text-dim);
+    font-size: 13.5px;
+    margin: 6px 0 22px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer { padding: 70px 0 60px; }
+  footer h2 { font-size: clamp(26px, 3.4vw, 34px); margin-bottom: 20px; }
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    color: var(--text-dim);
+    font-size: 15px;
+    margin-top: 8px;
+  }
+  .contact-row a { color: var(--text); }
+  .foot-note { margin-top: 50px; color: var(--text-faint); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="nav-name" href="index.html" style="color:var(--text);">SHMB</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#included">What's Included</a>
+      <a href="#pricing">Pricing</a>
+      <a href="about.html">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">The Content Clarity Audit</span>
+    <h1>Know exactly what's <span>costing you clients.</span></h1>
+    <p class="lede">A full diagnostic of your profile and content, delivered in 5–7 business days as a video walkthrough plus a written report.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-fill" href="#contact">Book Your Audit</a>
+      <a class="btn btn-outline" href="#included">See What's Included</a>
+    </div>
+  </div>
+</header>
+
+<section id="included">
+  <div class="wrap">
+    <span class="eyebrow">What's Included</span>
+    <h2>Six deliverables, one clear picture of what's working and what isn't.</h2>
+
+    <div class="offer-grid">
+      <div class="offer-item">
+        <h4>6P Scorecard</h4>
+        <p>All six positioning elements scored Active, Weak, or Missing, with one finding and one fix for each.</p>
+      </div>
+      <div class="offer-item">
+        <h4>Avatar Targeting Assessment</h4>
+        <p>Is your content speaking to the right person? A messaging shift recommended where it isn't.</p>
+      </div>
+      <div class="offer-item">
+        <h4>Bio Teardown + Rewrite</h4>
+        <p>Your current bio analyzed against the 3P formula, with a ready-to-use rewritten version delivered.</p>
+      </div>
+      <div class="offer-item">
+        <h4>Content-to-Offer Alignment Analysis</h4>
+        <p>Your last 9–12 posts reviewed for how well they connect back to your actual offer.</p>
+      </div>
+      <div class="offer-item">
+        <h4>CTA + Link Audit</h4>
+        <p>Your current call-to-action and link strategy reviewed, with a specific fix recommended.</p>
+      </div>
+      <div class="offer-item">
+        <h4>Custom 30-Day Content Plan</h4>
+        <p>A step-by-step action plan built specifically for your offer and your avatar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <span class="eyebrow">Pricing</span>
+    <h2>An easy yes, not a big commitment.</h2>
+
+    <div class="price-card">
+      <span class="price-tag">$397</span>
+      <span class="price-was">$597</span>
+      <p class="price-note">Founding rate for the first 10 clients. Standard rate after that.</p>
+      <p style="color:var(--text-dim); font-size:14.5px;">One new client from a cleaner profile and sharper content pays this back many times over. This isn't a cost, it's a diagnostic that tells you exactly where your leads are going.</p>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <span class="eyebrow">Get In Touch</span>
+    <h2>Ready to find out what's actually going on with your content?</h2>
+    <div class="contact-row">
+      <a href="mailto:sonyaberns@outlook.com">sonyaberns@outlook.com</a>
+      <a href="https://www.linkedin.com/in/sonya-berns/" target="_blank" rel="noopener">linkedin.com/in/sonya-berns</a>
+      <span>Campbell River, BC</span>
+    </div>
+    <p class="foot-note">© 2026 SHMB Digital Marketing</p>
+  </div>
+</footer>
+
+</body>
+</html>
