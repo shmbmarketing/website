@@ -299,6 +299,15 @@
     border: 1px solid var(--line);
     background: var(--bg-card);
   }
+  .post-shot {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+  }
   @media (max-width: 680px) { .proof-shot { height: 320px; } }
 
   /* ---------- THE WORK (PROOF) ---------- */
@@ -640,17 +649,17 @@
       <div class="proof-block-label">Post Performance</div>
       <div class="post-examples">
         <div class="post-example reveal">
-          <div class="img-placeholder square">Post visual — "If you feel far away from yourself…"</div>
+          <img class="post-shot" src="assets/work/post-far-away.png" alt="Instagram insights for the reel 'If you feel far away from yourself'">
           <p class="post-hook">"If you feel far away from yourself…"</p>
           <p class="post-stats">1,294 views · 14 saves</p>
         </div>
         <div class="post-example reveal">
-          <div class="img-placeholder square">Post visual — "Your body is not fighting you…"</div>
+          <img class="post-shot" src="assets/work/post-body-fighting.png" alt="Instagram insights for the reel 'Your body is not fighting you'">
           <p class="post-hook">"Your body is not fighting you…"</p>
           <p class="post-stats">488 views · 4 saves</p>
         </div>
         <div class="post-example reveal">
-          <div class="img-placeholder square">Post visual — "Can you do TRE on your own?"</div>
+          <img class="post-shot" src="assets/work/post-tre-own.png" alt="Instagram insights for the reel 'Can you do TRE on your own?'">
           <p class="post-hook">"Can you do TRE on your own?"</p>
           <p class="post-stats">378 views · 4 saves</p>
         </div>
@@ -660,8 +669,8 @@
     <div class="proof-block">
       <div class="proof-block-label">Systems Proof</div>
       <div class="systems-proof-grid">
-        <div class="img-placeholder wide reveal">Content OS screenshot — how a brief moves through the system</div>
-        <div class="img-placeholder wide reveal">Content OS screenshot — full pipeline diagram</div>
+        <img class="analytics-img reveal" src="assets/work/systems-mechanism.png" alt="Diagram: how a client brief moves through the SHMB content system">
+        <img class="analytics-img reveal" src="assets/work/systems-pipeline.png" alt="Diagram: the full SHMB content pipeline, from idea to ready-to-film">
       </div>
       <p class="systems-caption">The infrastructure behind every client engagement — not a template, a working system.</p>
     </div>
