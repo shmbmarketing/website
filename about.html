@@ -84,6 +84,7 @@
     font-weight: 600;
     font-size: 16px;
     letter-spacing: 0.02em;
+    color: var(--text);
   }
   .nav-links { display: flex; gap: 28px; }
   .nav-links a {
@@ -146,6 +147,18 @@
     margin-bottom: 56px;
   }
 
+  /* ---------- REVEAL ON SCROLL (shared pattern, reused everywhere) ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease;
+  }
+  .reveal.revealed { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fw-node, .fw-arrow, .reveal { transition: none; opacity: 1; transform: none; }
+  }
+
   /* ---------- FRAMEWORK DIAGRAM ---------- */
   .framework {
     display: flex;
@@ -162,11 +175,7 @@
     min-width: 118px;
     flex: 1 1 118px;
     text-align: center;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease;
   }
-  .fw-node.revealed { opacity: 1; transform: translateY(0); }
   .fw-node:hover { border-color: var(--rose); }
   .fw-node .num {
     font-family: 'Space Grotesk', sans-serif;
@@ -185,10 +194,7 @@
     font-size: 22px;
     padding: 0 8px;
     flex: 0 0 auto;
-    opacity: 0;
-    transition: opacity 0.4s ease;
   }
-  .fw-arrow.revealed { opacity: 1; }
   .fw-caption {
     margin-top: 36px;
     color: var(--text-dim);
@@ -238,6 +244,157 @@
   .method-pull .teal { color: var(--rose); }
   @media (max-width: 640px) { .method-grid { grid-template-columns: 1fr; } }
 
+  /* ---------- CORE STRENGTHS ---------- */
+  .strengths-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 8px;
+  }
+  .strength-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 24px;
+  }
+  .strength-card:hover { border-color: var(--rose); }
+  .strength-card h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 15.5px;
+    margin-bottom: 8px;
+  }
+  .strength-card p { color: var(--text-dim); font-size: 14px; }
+  .strength-card.placeholder {
+    border-style: dashed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-faint);
+    font-size: 13px;
+    text-align: center;
+  }
+  @media (max-width: 640px) { .strengths-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- LINKEDIN BRIDGE ---------- */
+  .bridge { padding: 56px 0; text-align: center; }
+  .bridge p { color: var(--text-dim); font-size: 16px; margin-bottom: 8px; }
+  .bridge a { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 17px; }
+  .scroll-down { margin-top: 28px; color: var(--rose); font-size: 20px; }
+
+  /* ---------- IMAGE PLACEHOLDER ---------- */
+  .img-placeholder {
+    background: var(--bg-card);
+    border: 1px dashed var(--line);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-faint);
+    font-size: 13px;
+    padding: 20px;
+  }
+  .img-placeholder.wide { aspect-ratio: 16 / 9; }
+  .img-placeholder.square { aspect-ratio: 1 / 1; }
+  .img-placeholder.tall { aspect-ratio: 4 / 5; }
+
+  /* ---------- THE WORK (PROOF) ---------- */
+  .case-tag {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--rose);
+    margin-bottom: 10px;
+  }
+  .proof-lead { margin-bottom: 44px; }
+  .proof-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .proof-pair-label {
+    text-align: center;
+    color: var(--text-faint);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+  .proof-block { margin-bottom: 56px; }
+  .proof-block-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 16px;
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .stat-tile {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-tile .stat-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: var(--rose);
+    display: block;
+  }
+  .stat-tile .stat-label {
+    color: var(--text-dim);
+    font-size: 13px;
+    margin-top: 4px;
+  }
+  @media (max-width: 680px) {
+    .proof-pair { grid-template-columns: 1fr; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .testimonial {
+    background: var(--bg-card);
+    border-left: 2px solid var(--rose);
+    border-radius: 4px;
+    padding: 26px 28px;
+  }
+  .testimonial p.quote {
+    font-size: 16px;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+  .testimonial .attribution {
+    color: var(--text-faint);
+    font-size: 13.5px;
+  }
+
+  .post-examples {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .post-example .img-placeholder { margin-bottom: 10px; }
+  .post-example .post-hook { font-size: 14px; color: var(--text); margin-bottom: 4px; }
+  .post-example .post-stats { color: var(--text-faint); font-size: 12.5px; }
+  @media (max-width: 720px) { .post-examples { grid-template-columns: 1fr; } }
+
+  .systems-proof-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  @media (max-width: 680px) { .systems-proof-grid { grid-template-columns: 1fr; } }
+  .systems-caption { color: var(--text-dim); font-size: 15px; max-width: 560px; }
+
   /* ---------- TWO PATHS ---------- */
   .paths {
     display: grid;
@@ -245,17 +402,12 @@
     gap: 22px;
   }
   .path-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
     border-radius: 6px;
     padding: 34px 30px;
   }
-  .path-card.employers {
-    background: var(--bg-card);
-    border: 1px solid var(--line);
-  }
-  .path-card.brands {
-    background: #2E3428;
-    border: 1px solid var(--sage);
-  }
+  .path-card:hover { border-color: var(--rose); }
   .path-card h3 {
     font-size: 21px;
     margin-bottom: 14px;
@@ -265,7 +417,6 @@
     font-size: 15px;
     margin-bottom: 22px;
   }
-  .path-card.brands p { color: #C4CDB7; }
   @media (max-width: 680px) { .paths { grid-template-columns: 1fr; } }
 
   /* ---------- EXPERIENCE ---------- */
@@ -296,30 +447,52 @@
 
   /* ---------- FOOTER ---------- */
   footer { padding: 70px 0 60px; }
+  .footer-top {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 8px;
+  }
+  .footer-headshot.img-placeholder {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    flex: 0 0 auto;
+    font-size: 11px;
+    padding: 8px;
+  }
   footer h2 { font-size: clamp(26px, 3.4vw, 34px); margin-bottom: 20px; }
   .contact-row {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
     gap: 22px;
     color: var(--text-dim);
     font-size: 15px;
     margin-top: 8px;
   }
   .contact-row a { color: var(--text); }
-  .foot-note { margin-top: 50px; color: var(--text-faint); font-size: 13px; }
-
-  @media (prefers-reduced-motion: reduce) {
-    .fw-node, .fw-arrow { transition: none; opacity: 1; transform: none; }
+  .social-icons { display: flex; gap: 16px; align-items: center; }
+  .social-icons a {
+    color: var(--text-dim);
+    display: inline-flex;
+    width: 34px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--line);
+    border-radius: 50%;
   }
+  .social-icons a:hover { color: var(--rose); border-color: var(--rose); text-decoration: none; }
+  .foot-note { margin-top: 50px; color: var(--text-faint); font-size: 13px; }
 </style>
 </head>
 <body>
 
 <nav>
   <div class="wrap">
-    <a class="nav-name" href="index.html" style="color:var(--text);">SONYA BERNS</a>
+    <a class="nav-name" href="index.html">SHMB</a>
     <div class="nav-links">
-      <a href="index.html">SHMB Home</a>
       <a href="#method">How I Think</a>
       <a href="#paths">Work With Me</a>
       <a href="#experience">Experience</a>
@@ -340,6 +513,69 @@
   </div>
 </header>
 
+<section id="experience">
+  <div class="wrap">
+    <span class="eyebrow">Experience</span>
+    <h2>Where this comes from.</h2>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-dates">Aug 2025 – Present</div>
+        <div class="tl-role">Content System Strategist / Digital Marketing</div>
+        <div class="tl-org">SHMB Digital Marketing · Self-Employed · Campbell River, BC</div>
+        <p class="tl-desc">Built and operate a web-based content operating system using Claude Code, independently learning and configuring every tool in the stack. Own each client relationship end-to-end — strategy, scripting, creative direction, and performance review — with AI accelerating drafts and human judgment as the final pass before anything ships. Research translates directly into content angles, hooks, and calendars, repurposed across platforms and audiences.</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dates">Apr 2019 – Aug 2025</div>
+        <div class="tl-role">Social Media Coordinator</div>
+        <div class="tl-org">Campbell River &amp; North Island Transition Society · Campbell River, BC</div>
+        <p class="tl-desc">Ran paid ad campaigns through Facebook, Instagram, and LinkedIn end-to-end — budget, targeting, creative, and reporting — alongside four-plus years coordinating social media and content strategy for the organization.</p>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dates">Jun 2012 – Sep 2016</div>
+        <div class="tl-role">Conveyancer</div>
+        <div class="tl-org">Joanne L. Johnson, Notary Public · Campbell River, BC</div>
+        <p class="tl-desc">Prepared and reviewed legal documents for real estate transactions, managed financial reconciliations and statements of adjustments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="strengths">
+  <div class="wrap">
+    <span class="eyebrow">Core Strengths</span>
+    <h2>What I actually do, day to day.</h2>
+    <div class="strengths-grid">
+      <div class="strength-card reveal">
+        <h4>Paid Media &amp; Campaigns</h4>
+        <p>Facebook, Instagram, and LinkedIn ad campaigns run end-to-end: budget, targeting, creative, and performance reporting.</p>
+      </div>
+      <div class="strength-card reveal">
+        <h4>Content Production &amp; Brand Voice</h4>
+        <p>Writing, scripting, and producing content across formats, on camera and off, while keeping one consistent brand voice.</p>
+      </div>
+      <div class="strength-card reveal">
+        <h4>AI-Assisted Production</h4>
+        <p>A self-built content operating system that uses AI daily for drafting and speed, with human judgment as the final pass before anything ships.</p>
+      </div>
+      <div class="strength-card reveal">
+        <h4>Independent Ownership</h4>
+        <p>Running a full marketing function solo, from strategy through execution and reporting, without a supporting team.</p>
+      </div>
+      <div class="strength-card placeholder reveal">
+        Future card slot — certifications / awards
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="bridge reveal">
+  <div class="wrap">
+    <p>Full professional history on LinkedIn.</p>
+    <a href="https://www.linkedin.com/in/sonya-berns/" target="_blank" rel="noopener">→ linkedin.com/in/sonya-berns</a>
+    <div class="scroll-down">↓</div>
+  </div>
+</div>
+
 <section id="method">
   <div class="wrap">
     <span class="eyebrow">How I Think</span>
@@ -347,19 +583,19 @@
     <p class="section-lede">This is the actual decision framework I use for every piece of content I make, for clients and for my own work. Not a vibe. A process.</p>
 
     <div class="framework" id="framework">
-      <div class="fw-node"><div class="num">01</div><div class="label">Idea</div></div>
-      <div class="fw-arrow">→</div>
-      <div class="fw-node"><div class="num">02</div><div class="label">Platform</div></div>
-      <div class="fw-arrow">→</div>
-      <div class="fw-node"><div class="num">03</div><div class="label">Content Type</div></div>
-      <div class="fw-arrow">→</div>
-      <div class="fw-node"><div class="num">04</div><div class="label">Format</div></div>
-      <div class="fw-arrow">→</div>
-      <div class="fw-node"><div class="num">05</div><div class="label">Story Arc</div></div>
-      <div class="fw-arrow">→</div>
-      <div class="fw-node"><div class="num">06</div><div class="label">Hook</div></div>
-      <div class="fw-arrow">→</div>
-      <div class="fw-node"><div class="num">07</div><div class="label">Final Format</div></div>
+      <div class="fw-node reveal"><div class="num">01</div><div class="label">Idea</div></div>
+      <div class="fw-arrow reveal">→</div>
+      <div class="fw-node reveal"><div class="num">02</div><div class="label">Platform</div></div>
+      <div class="fw-arrow reveal">→</div>
+      <div class="fw-node reveal"><div class="num">03</div><div class="label">Content Type</div></div>
+      <div class="fw-arrow reveal">→</div>
+      <div class="fw-node reveal"><div class="num">04</div><div class="label">Format</div></div>
+      <div class="fw-arrow reveal">→</div>
+      <div class="fw-node reveal"><div class="num">05</div><div class="label">Story Arc</div></div>
+      <div class="fw-arrow reveal">→</div>
+      <div class="fw-node reveal"><div class="num">06</div><div class="label">Hook</div></div>
+      <div class="fw-arrow reveal">→</div>
+      <div class="fw-node reveal"><div class="num">07</div><div class="label">Final Format</div></div>
     </div>
 
     <p class="fw-caption">Skipping a step is how content ends up generic. Following all seven, in order, is how it ends up sounding like an actual person said it.</p>
@@ -373,11 +609,11 @@
     <p class="section-lede">I use AI daily to draft, research, and move fast. But the real work happens at two points where the human input goes in, and it's never optional.</p>
 
     <div class="method-grid">
-      <div class="method-card">
+      <div class="method-card reveal">
         <span class="step-tag">Before the script</span>
         <p>Every idea goes back to the client first. I want their real thoughts, values, and opinions, and real examples from their own life, before a single line gets written.</p>
       </div>
-      <div class="method-card">
+      <div class="method-card reveal">
         <span class="step-tag">After the first draft</span>
         <p>The script goes back again. This second round is where it gets refined with their actual voice, their beliefs, their stories, not a generic version of them.</p>
       </div>
@@ -387,47 +623,94 @@
   </div>
 </section>
 
+<section id="work">
+  <div class="wrap">
+    <span class="eyebrow">The Work</span>
+    <h2>From newly certified to organic industry validation — in 30 days.</h2>
+    <p class="section-lede">Real client results, not hypotheticals.</p>
+
+    <div class="proof-lead reveal">
+      <div class="case-tag">Case Study: Tremoring Pine Healing</div>
+      <div class="img-placeholder wide">Lead visual — David Berceli (creator of TRE) engagement screenshot</div>
+    </div>
+
+    <div class="proof-block">
+      <div class="proof-block-label">Oct 2025 → Today</div>
+      <div class="proof-pair">
+        <div class="reveal">
+          <div class="img-placeholder wide">Before screenshot — Oct 2025 baseline</div>
+          <div class="proof-pair-label">Before</div>
+        </div>
+        <div class="reveal">
+          <div class="img-placeholder wide">After screenshot — 131 followers</div>
+          <div class="proof-pair-label">After</div>
+        </div>
+      </div>
+      <div class="img-placeholder wide reveal" style="margin-top:16px;">Growth chart — Oct 2025 to today</div>
+    </div>
+
+    <div class="proof-block">
+      <div class="proof-block-label">Last 30 Days</div>
+      <div class="stat-grid">
+        <div class="stat-tile reveal"><span class="stat-num">131</span><span class="stat-label">Followers (+40.86%)</span></div>
+        <div class="stat-tile reveal"><span class="stat-num">10,030</span><span class="stat-label">Account Views (+1,710%)</span></div>
+        <div class="stat-tile reveal"><span class="stat-num">228</span><span class="stat-label">Avg. Daily Reach (+781%)</span></div>
+        <div class="stat-tile reveal"><span class="stat-num">44 · 45</span><span class="stat-label">Saves · Shares</span></div>
+        <div class="stat-tile reveal"><span class="stat-num">1</span><span class="stat-label">Inbound Lead — Day 3</span></div>
+      </div>
+    </div>
+
+    <div class="proof-block testimonial reveal">
+      <p class="quote">"Sonya helped to launch my social media prior to starting my business. She listened to my vision and was able to implement strategies that aligned with my needs. She is wonderful to work with and I would highly recommend her to anyone who needs direction in their marketing."</p>
+      <p class="attribution">— Jen H., Business Owner</p>
+    </div>
+
+    <div class="proof-block">
+      <div class="proof-block-label">Post Performance</div>
+      <div class="post-examples">
+        <div class="post-example reveal">
+          <div class="img-placeholder square">Post visual — "If you feel far away from yourself…"</div>
+          <p class="post-hook">"If you feel far away from yourself…"</p>
+          <p class="post-stats">1,294 views · 14 saves</p>
+        </div>
+        <div class="post-example reveal">
+          <div class="img-placeholder square">Post visual — "Your body is not fighting you…"</div>
+          <p class="post-hook">"Your body is not fighting you…"</p>
+          <p class="post-stats">488 views · 4 saves</p>
+        </div>
+        <div class="post-example reveal">
+          <div class="img-placeholder square">Post visual — "Can you do TRE on your own?"</div>
+          <p class="post-hook">"Can you do TRE on your own?"</p>
+          <p class="post-stats">378 views · 4 saves</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="proof-block">
+      <div class="proof-block-label">Systems Proof</div>
+      <div class="systems-proof-grid">
+        <div class="img-placeholder wide reveal">Content OS screenshot — how a brief moves through the system</div>
+        <div class="img-placeholder wide reveal">Content OS screenshot — full pipeline diagram</div>
+      </div>
+      <p class="systems-caption">The infrastructure behind every client engagement — not a template, a working system.</p>
+    </div>
+  </div>
+</section>
+
 <section id="paths">
   <div class="wrap">
     <span class="eyebrow">Who This Is For</span>
     <h2>Two ways to work with me.</h2>
     <div class="paths">
-      <div class="path-card employers">
+      <div class="path-card reveal">
         <h3>Hiring for a marketing or content role?</h3>
         <p>I own a channel end-to-end, strategy, creative, paid media, and reporting, without waiting on a team to execute. AI is part of my daily workflow, not a shortcut I reach for occasionally.</p>
         <a class="btn btn-outline" href="#contact">Let's talk</a>
       </div>
-      <div class="path-card brands">
+      <div class="path-card reveal">
         <h3>Want your content to sound like you, not like everyone else's AI content?</h3>
         <p>I build content systems for founder-led brands that keep your real voice, beliefs, and stories in the work, using AI to move fast without losing what makes it yours.</p>
-        <a class="btn btn-outline" href="#contact" style="color:#F3EEE7; border-color:#9CA88C;">Let's talk</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="experience">
-  <div class="wrap">
-    <span class="eyebrow">Experience</span>
-    <h2>Where this comes from.</h2>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dates">Aug 2025 – Present</div>
-        <div class="tl-role">Content System Strategist / Digital Marketing</div>
-        <div class="tl-org">SHMB Digital Marketing · Self-Employed · Campbell River, BC</div>
-        <p class="tl-desc">Built and operate a web-based content operating system using Claude Code, running content strategy, scripting, creative direction, and performance review for founder-led brands.</p>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dates">Apr 2019 – Aug 2025</div>
-        <div class="tl-role">Social Media Coordinator</div>
-        <div class="tl-org">Campbell River &amp; North Island Transition Society · Campbell River, BC</div>
-        <p class="tl-desc">Ran paid ad campaigns through Facebook, Instagram, and LinkedIn end-to-end, budget, targeting, creative, and reporting, alongside four-plus years coordinating social media and content strategy for the organization.</p>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dates">Jun 2012 – Sep 2016</div>
-        <div class="tl-role">Conveyancer</div>
-        <div class="tl-org">Joanne L. Johnson, Notary Public · Campbell River, BC</div>
-        <p class="tl-desc">Prepared and reviewed legal documents for real estate transactions, managed financial reconciliations and statements of adjustments.</p>
+        <a class="btn btn-outline" href="#contact">Let's talk</a>
       </div>
     </div>
   </div>
@@ -435,13 +718,26 @@
 
 <footer id="contact">
   <div class="wrap">
-    <span class="eyebrow">Get In Touch</span>
-    <h2>Let's figure something out.</h2>
+    <div class="footer-top reveal">
+      <div class="footer-headshot img-placeholder">Headshot</div>
+      <div>
+        <span class="eyebrow" style="margin-bottom:6px;">Get In Touch</span>
+        <h2 style="margin-bottom:0;">Let's figure something out.</h2>
+      </div>
+    </div>
     <div class="contact-row">
-      <a href="mailto:sonyaberns@outlook.com">sonyaberns@outlook.com</a>
-      <span>(250) 895-9849</span>
-      <a href="https://www.linkedin.com/in/sonya-berns/" target="_blank" rel="noopener">linkedin.com/in/sonya-berns</a>
-      <span>Campbell River, BC</span>
+      <a href="mailto:info@shmbmarketing.ca">info@shmbmarketing.ca</a>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/sonya.berns.1" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12Z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/shmbmarketing" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.5.5.9 1.11 1.15 1.77.25.64.42 1.37.47 2.43C21.99 8.94 22 9.28 22 12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.64.25-1.37.42-2.43.47C15.06 21.99 14.72 22 12 22s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77.5-.5 1.11-.9 1.77-1.15.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2Zm0 1.8c-2.67 0-2.99.01-4.04.06-.87.04-1.34.18-1.65.3-.42.16-.72.36-1.03.67-.31.31-.51.61-.67 1.03-.12.31-.26.78-.3 1.65C4.26 8.75 4.25 9.07 4.25 12s.01 3.25.06 4.3c.04.87.18 1.34.3 1.65.16.42.36.72.67 1.03.31.31.61.51 1.03.67.31.12.78.26 1.65.3 1.05.05 1.37.06 4.04.06s2.99-.01 4.04-.06c.87-.04 1.34-.18 1.65-.3.42-.16.72-.36 1.03-.67.31-.31.51-.61.67-1.03.12-.31.26-.78.3-1.65.05-1.05.06-1.37.06-4.3s-.01-3.25-.06-4.3c-.04-.87-.18-1.34-.3-1.65a2.77 2.77 0 0 0-.67-1.03 2.77 2.77 0 0 0-1.03-.67c-.31-.12-.78-.26-1.65-.3C14.99 3.81 14.67 3.8 12 3.8Zm0 3.05a5.15 5.15 0 1 1 0 10.3 5.15 5.15 0 0 1 0-10.3Zm0 1.8a3.35 3.35 0 1 0 0 6.7 3.35 3.35 0 0 0 0-6.7Zm5.34-1.99a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0Z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/sonya-berns/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.68H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.55V9h3.57v11.45Z"/></svg>
+        </a>
+      </div>
     </div>
     <p class="foot-note">© 2026 Sonya Berns</p>
   </div>
@@ -449,7 +745,7 @@
 
 <script>
   (function () {
-    var nodes = document.querySelectorAll('.fw-node, .fw-arrow');
+    var nodes = document.querySelectorAll('.fw-node, .fw-arrow, .reveal');
     var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) {
       nodes.forEach(function (n) { n.classList.add('revealed'); });
@@ -459,7 +755,7 @@
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           var i = Array.prototype.indexOf.call(nodes, entry.target);
-          setTimeout(function () { entry.target.classList.add('revealed'); }, i * 70);
+          setTimeout(function () { entry.target.classList.add('revealed'); }, (i % 8) * 70);
           observer.unobserve(entry.target);
         }
       });
