@@ -244,38 +244,6 @@
   .method-pull .teal { color: var(--rose); }
   @media (max-width: 640px) { .method-grid { grid-template-columns: 1fr; } }
 
-  /* ---------- CORE STRENGTHS ---------- */
-  .strengths-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-    margin-top: 8px;
-  }
-  .strength-card {
-    background: var(--bg-card);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 24px;
-  }
-  .strength-card:hover { border-color: var(--rose); }
-  .strength-card h4 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 15.5px;
-    margin-bottom: 8px;
-  }
-  .strength-card p { color: var(--text-dim); font-size: 14px; }
-  .strength-card.placeholder {
-    border-style: dashed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-faint);
-    font-size: 13px;
-    text-align: center;
-  }
-  @media (max-width: 640px) { .strengths-grid { grid-template-columns: 1fr; } }
-
   /* ---------- LINKEDIN BRIDGE ---------- */
   .bridge { padding: 56px 0; text-align: center; }
   .bridge p { color: var(--text-dim); font-size: 16px; margin-bottom: 8px; }
@@ -298,6 +266,40 @@
   .img-placeholder.wide { aspect-ratio: 16 / 9; }
   .img-placeholder.square { aspect-ratio: 1 / 1; }
   .img-placeholder.tall { aspect-ratio: 4 / 5; }
+
+  .lead-img {
+    display: block;
+    max-width: 320px;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+  }
+  .proof-caption {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 14px;
+    margin: 14px auto 0;
+    max-width: 480px;
+  }
+  .proof-shot {
+    display: block;
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+  }
+  .analytics-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    background: var(--bg-card);
+  }
+  @media (max-width: 680px) { .proof-shot { height: 320px; } }
 
   /* ---------- THE WORK (PROOF) ---------- */
   .case-tag {
@@ -433,17 +435,11 @@
     border-radius: 50%;
     background: var(--rose);
   }
-  .tl-dates {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-faint);
-    margin-bottom: 6px;
-  }
-  .tl-role { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; }
-  .tl-org { color: var(--text-dim); font-size: 14.5px; margin-top: 2px; margin-bottom: 8px; }
+  .tl-role { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 18px; margin-bottom: 8px; }
   .tl-desc { color: var(--text-dim); font-size: 14.5px; max-width: 620px; }
+  .tl-item.placeholder-item::before { background: transparent; border: 1px solid var(--text-faint); }
+  .tl-item.placeholder-item .tl-role,
+  .tl-item.placeholder-item .tl-desc { color: var(--text-faint); font-style: italic; }
 
   /* ---------- FOOTER ---------- */
   footer { padding: 70px 0 60px; }
@@ -495,7 +491,7 @@
     <div class="nav-links">
       <a href="#method">How I Think</a>
       <a href="#paths">Work With Me</a>
-      <a href="#experience">Experience</a>
+      <a href="#strengths">Core Strengths</a>
       <a href="#contact">Contact</a>
     </div>
   </div>
@@ -513,56 +509,30 @@
   </div>
 </header>
 
-<section id="experience">
-  <div class="wrap">
-    <span class="eyebrow">Experience</span>
-    <h2>Where this comes from.</h2>
-    <div class="timeline">
-      <div class="tl-item reveal">
-        <div class="tl-dates">Aug 2025 – Present</div>
-        <div class="tl-role">Content System Strategist / Digital Marketing</div>
-        <div class="tl-org">SHMB Digital Marketing · Self-Employed · Campbell River, BC</div>
-        <p class="tl-desc">Built and operate a web-based content operating system using Claude Code, independently learning and configuring every tool in the stack. Own each client relationship end-to-end — strategy, scripting, creative direction, and performance review — with AI accelerating drafts and human judgment as the final pass before anything ships. Research translates directly into content angles, hooks, and calendars, repurposed across platforms and audiences.</p>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-dates">Apr 2019 – Aug 2025</div>
-        <div class="tl-role">Social Media Coordinator</div>
-        <div class="tl-org">Campbell River &amp; North Island Transition Society · Campbell River, BC</div>
-        <p class="tl-desc">Ran paid ad campaigns through Facebook, Instagram, and LinkedIn end-to-end — budget, targeting, creative, and reporting — alongside four-plus years coordinating social media and content strategy for the organization.</p>
-      </div>
-      <div class="tl-item reveal">
-        <div class="tl-dates">Jun 2012 – Sep 2016</div>
-        <div class="tl-role">Conveyancer</div>
-        <div class="tl-org">Joanne L. Johnson, Notary Public · Campbell River, BC</div>
-        <p class="tl-desc">Prepared and reviewed legal documents for real estate transactions, managed financial reconciliations and statements of adjustments.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="strengths">
   <div class="wrap">
     <span class="eyebrow">Core Strengths</span>
-    <h2>What I actually do, day to day.</h2>
-    <div class="strengths-grid">
-      <div class="strength-card reveal">
-        <h4>Paid Media &amp; Campaigns</h4>
-        <p>Facebook, Instagram, and LinkedIn ad campaigns run end-to-end: budget, targeting, creative, and performance reporting.</p>
+    <h2>Where this comes from.</h2>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-role">Paid Media &amp; Campaigns</div>
+        <p class="tl-desc">Facebook, Instagram, and LinkedIn ad campaigns run end-to-end: budget, targeting, creative, and performance reporting.</p>
       </div>
-      <div class="strength-card reveal">
-        <h4>Content Production &amp; Brand Voice</h4>
-        <p>Writing, scripting, and producing content across formats, on camera and off, while keeping one consistent brand voice.</p>
+      <div class="tl-item reveal">
+        <div class="tl-role">Content Production &amp; Brand Voice</div>
+        <p class="tl-desc">Writing, scripting, and producing content across formats, on camera and off, while keeping one consistent brand voice.</p>
       </div>
-      <div class="strength-card reveal">
-        <h4>AI-Assisted Production</h4>
-        <p>A self-built content operating system that uses AI daily for drafting and speed, with human judgment as the final pass before anything ships.</p>
+      <div class="tl-item reveal">
+        <div class="tl-role">AI-Assisted Production</div>
+        <p class="tl-desc">A self-built content operating system that uses AI daily for drafting and speed, with human judgment as the final pass before anything ships.</p>
       </div>
-      <div class="strength-card reveal">
-        <h4>Independent Ownership</h4>
-        <p>Running a full marketing function solo, from strategy through execution and reporting, without a supporting team.</p>
+      <div class="tl-item reveal">
+        <div class="tl-role">Independent Ownership</div>
+        <p class="tl-desc">Running a full marketing function solo, from strategy through execution and reporting, without a supporting team.</p>
       </div>
-      <div class="strength-card placeholder reveal">
-        Future card slot — certifications / awards
+      <div class="tl-item reveal placeholder-item">
+        <div class="tl-role">More to come</div>
+        <p class="tl-desc">Certifications and awards, added here once completed.</p>
       </div>
     </div>
   </div>
@@ -631,26 +601,27 @@
 
     <div class="proof-lead reveal">
       <div class="case-tag">Case Study: Tremoring Pine Healing</div>
-      <div class="img-placeholder wide">Lead visual — David Berceli (creator of TRE) engagement screenshot</div>
+      <img class="lead-img" src="assets/work/lead-david-berceli.jpg" alt="Instagram screenshot: David Berceli, creator of TRE, engaging with a Tremoring Pine Healing reel">
+      <p class="proof-caption">On Day 5, the global founder of TRE liked one of the reels — organic validation the content was landing in exactly the right community.</p>
     </div>
 
     <div class="proof-block">
-      <div class="proof-block-label">Oct 2025 → Today</div>
+      <div class="proof-block-label">Before → After</div>
       <div class="proof-pair">
         <div class="reveal">
-          <div class="img-placeholder wide">Before screenshot — Oct 2025 baseline</div>
+          <img class="proof-shot" src="assets/work/before-30day.jpg" alt="Tremoring Pine Healing Instagram profile before the 30-day content system">
           <div class="proof-pair-label">Before</div>
         </div>
         <div class="reveal">
-          <div class="img-placeholder wide">After screenshot — 131 followers</div>
+          <img class="proof-shot" src="assets/work/after-30day.jpg" alt="Tremoring Pine Healing Instagram profile after the 30-day content system — 131 followers">
           <div class="proof-pair-label">After</div>
         </div>
       </div>
-      <div class="img-placeholder wide reveal" style="margin-top:16px;">Growth chart — Oct 2025 to today</div>
+      <img class="analytics-img reveal" src="assets/work/analytics-30day.jpg" alt="30-day Instagram account insights for Tremoring Pine Healing" style="margin-top:16px;">
     </div>
 
     <div class="proof-block">
-      <div class="proof-block-label">Last 30 Days</div>
+      <div class="proof-block-label">30-Day Results</div>
       <div class="stat-grid">
         <div class="stat-tile reveal"><span class="stat-num">131</span><span class="stat-label">Followers (+40.86%)</span></div>
         <div class="stat-tile reveal"><span class="stat-num">10,030</span><span class="stat-label">Account Views (+1,710%)</span></div>
