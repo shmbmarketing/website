@@ -309,14 +309,32 @@
     border: 1px solid var(--line);
     background: var(--bg-card);
   }
+  .post-example-media {
+    position: relative;
+    display: block;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
   .post-shot {
     display: block;
     width: 100%;
     aspect-ratio: 9 / 16;
     object-fit: cover;
-    border-radius: 4px;
-    border: 1px solid var(--line);
   }
+  .play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.2s ease;
+  }
+  .play-overlay svg { opacity: 0; transition: opacity 0.2s ease; }
+  .post-example-media:hover .play-overlay { background: rgba(0, 0, 0, 0.35); }
+  .post-example-media:hover .play-overlay svg { opacity: 1; }
   @media (max-width: 680px) { .proof-shot { height: 320px; } }
 
   /* ---------- THE WORK (PROOF) ---------- */
@@ -357,34 +375,38 @@
     color: var(--text-faint);
     margin-bottom: 16px;
   }
-  .stat-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-  .stat-tile {
-    background: var(--bg-card);
+  .results-table-wrap {
+    overflow-x: auto;
     border: 1px solid var(--line);
     border-radius: 4px;
-    padding: 20px;
-    text-align: center;
   }
-  .stat-tile .stat-num {
+  .results-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  .results-table th {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    text-align: left;
+    padding: 14px 18px;
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  .results-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line);
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+  .results-table tr:last-child td { border-bottom: none; }
+  .results-table td:first-child { color: var(--text); }
+  .results-table td.rose {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 600;
-    font-size: 24px;
     color: var(--rose);
-    display: block;
   }
-  .stat-tile .stat-label {
-    color: var(--text-dim);
-    font-size: 13px;
-    margin-top: 4px;
-  }
-  @media (max-width: 680px) {
-    .proof-pair { grid-template-columns: 1fr; }
-    .stat-grid { grid-template-columns: 1fr 1fr; }
-  }
+  @media (max-width: 680px) { .proof-pair { grid-template-columns: 1fr; } }
 
   .testimonial {
     background: var(--bg-card);
@@ -628,13 +650,21 @@
 
     <div class="proof-lead reveal">
       <div class="case-tag">Case Study: Tremoring Pine Healing</div>
-      <h3 class="case-headline">From newly certified to organic industry validation — in 30 days.</h3>
-      <div class="stat-grid">
-        <div class="stat-tile reveal"><span class="stat-num">131</span><span class="stat-label">Followers (+40.86%)</span></div>
-        <div class="stat-tile reveal"><span class="stat-num">10,030</span><span class="stat-label">Account Views (+1,710%)</span></div>
-        <div class="stat-tile reveal"><span class="stat-num">228</span><span class="stat-label">Avg. Daily Reach (+781%)</span></div>
-        <div class="stat-tile reveal"><span class="stat-num">44 · 45</span><span class="stat-label">Saves · Shares</span></div>
-        <div class="stat-tile reveal"><span class="stat-num">1</span><span class="stat-label">Inbound Lead — Day 3</span></div>
+      <h3 class="case-headline">What we built together.</h3>
+      <div class="results-table-wrap">
+        <table class="results-table">
+          <thead>
+            <tr><th>Metric</th><th>Day 30 Result</th><th>% Change</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Followers</td><td>131</td><td class="rose">+40.86%</td></tr>
+            <tr><td>Total Account Views</td><td>10,030</td><td class="rose">+1,710%</td></tr>
+            <tr><td>Avg. Reach per Day</td><td>228</td><td class="rose">+781%</td></tr>
+            <tr><td>Total Saves (Reels)</td><td>44</td><td>First 30 Days</td></tr>
+            <tr><td>Total Shares (Reels)</td><td>45</td><td>First 30 Days</td></tr>
+            <tr><td>Inbound Enquiries (Leads)</td><td>1</td><td>First Inbound Lead</td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -659,30 +689,45 @@
       <p class="proof-caption">On Day 5, the global founder of TRE liked one of the reels — organic validation the content was landing in exactly the right community.</p>
     </div>
 
-    <div class="proof-block testimonial reveal">
-      <p class="quote">"Sonya helped to launch my social media prior to starting my business. She listened to my vision and was able to implement strategies that aligned with my needs. She is wonderful to work with and I would highly recommend her to anyone who needs direction in their marketing."</p>
-      <p class="attribution">— Jen H., Business Owner</p>
-    </div>
-
     <div class="proof-block">
       <div class="proof-block-label">Post Performance</div>
       <div class="post-examples">
         <div class="post-example reveal">
-          <img class="post-shot" src="assets/work/post-far-away.jpg" alt="Reel cover: If you feel far away from yourself">
+          <a class="post-example-media" href="https://www.instagram.com/reel/DZQ_bO9jF0E/" target="_blank" rel="noopener" aria-label="Watch on Instagram: If you feel far away from yourself">
+            <img class="post-shot" src="assets/work/post-far-away.jpg" alt="Reel cover: If you feel far away from yourself">
+            <span class="play-overlay" aria-hidden="true">
+              <svg width="44" height="44" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,0.5)"/><path d="M9.5 7.5v9l7-4.5-7-4.5z" fill="#fff"/></svg>
+            </span>
+          </a>
           <p class="post-hook">"If you feel far away from yourself…"</p>
           <p class="post-stats">1,294 views · 14 saves</p>
         </div>
         <div class="post-example reveal">
-          <img class="post-shot" src="assets/work/post-body-fighting.jpg" alt="Reel cover: Your body is not fighting you">
+          <a class="post-example-media" href="https://www.instagram.com/reel/DZStZrqD3iC/" target="_blank" rel="noopener" aria-label="Watch on Instagram: Your body is not fighting you">
+            <img class="post-shot" src="assets/work/post-body-fighting.jpg" alt="Reel cover: Your body is not fighting you">
+            <span class="play-overlay" aria-hidden="true">
+              <svg width="44" height="44" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,0.5)"/><path d="M9.5 7.5v9l7-4.5-7-4.5z" fill="#fff"/></svg>
+            </span>
+          </a>
           <p class="post-hook">"Your body is not fighting you…"</p>
           <p class="post-stats">488 views · 4 saves</p>
         </div>
         <div class="post-example reveal">
-          <img class="post-shot" src="assets/work/post-tre-own.jpg" alt="Reel cover: Can you do TRE on your own?">
+          <a class="post-example-media" href="https://www.instagram.com/reel/DZIaM5liAkI/" target="_blank" rel="noopener" aria-label="Watch on Instagram: Can you do TRE on your own?">
+            <img class="post-shot" src="assets/work/post-tre-own.jpg" alt="Reel cover: Can you do TRE on your own?">
+            <span class="play-overlay" aria-hidden="true">
+              <svg width="44" height="44" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="rgba(0,0,0,0.5)"/><path d="M9.5 7.5v9l7-4.5-7-4.5z" fill="#fff"/></svg>
+            </span>
+          </a>
           <p class="post-hook">"Can you do TRE on your own?"</p>
           <p class="post-stats">378 views · 4 saves</p>
         </div>
       </div>
+    </div>
+
+    <div class="proof-block testimonial reveal">
+      <p class="quote">"Sonya helped to launch my social media prior to starting my business. She listened to my vision and was able to implement strategies that aligned with my needs. She is wonderful to work with and I would highly recommend her to anyone who needs direction in their marketing."</p>
+      <p class="attribution">— Jen H., Business Owner</p>
     </div>
 
     <div class="proof-block">
