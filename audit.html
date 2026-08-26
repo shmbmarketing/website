@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Content Clarity Audit — SHMB Digital Marketing</title>
+<title>The Content Review — SHMB Digital Marketing</title>
 <meta name="description" content="A full diagnostic of your profile and content, delivered in 5–7 business days as a video walkthrough plus a written report.">
 <link rel="canonical" href="https://shmbmarketing.ca/audit.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -92,11 +92,30 @@
     font-weight: 500;
   }
   .nav-links a:hover { color: var(--text); text-decoration: none; }
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    padding: 4px;
+    align-items: center;
+    justify-content: center;
+  }
 
   @media (max-width: 640px) {
-    nav .wrap { flex-direction: column; align-items: flex-start; gap: 12px; padding-top: 14px; padding-bottom: 14px; }
-    .nav-links { gap: 16px; flex-wrap: wrap; }
-    .nav-links a { font-size: 13px; }
+    nav .wrap { flex-wrap: wrap; }
+    .nav-toggle { display: inline-flex; order: 2; }
+    .nav-links {
+      display: none;
+      width: 100%;
+      order: 3;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 14px;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 14px; padding: 10px 2px; border-top: 1px solid var(--line); }
   }
 
   /* ---------- HERO ---------- */
@@ -229,10 +248,11 @@
 <nav>
   <div class="wrap">
     <a class="nav-name" href="index.html" style="color:var(--text);">SHMB</a>
-    <div class="nav-links">
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="nav-links" id="nav-links">
       <a href="index.html">Home</a>
-      <a href="#included">What's Included</a>
-      <a href="#pricing">Pricing</a>
       <a href="about.html">About</a>
       <a href="#contact">Contact</a>
     </div>
@@ -241,11 +261,11 @@
 
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow">The Content Clarity Audit</span>
+    <span class="eyebrow">The Content Review</span>
     <h1>Know exactly what's <span>costing you clients.</span></h1>
     <p class="lede">A full diagnostic of your profile and content, delivered in 5–7 business days as a video walkthrough plus a written report.</p>
     <div class="hero-ctas">
-      <a class="btn btn-fill" href="#contact">Book Your Audit</a>
+      <a class="btn btn-fill" href="#contact">Book Your Content Review</a>
       <a class="btn btn-outline" href="#included">See What's Included</a>
     </div>
   </div>
@@ -274,7 +294,7 @@
         <p>Your last 9–12 posts reviewed for how well they connect back to your actual offer.</p>
       </div>
       <div class="offer-item">
-        <h4>CTA + Link Audit</h4>
+        <h4>CTA + Link Review</h4>
         <p>Your current call-to-action and link strategy reviewed, with a specific fix recommended.</p>
       </div>
       <div class="offer-item">
@@ -320,6 +340,24 @@
     <p class="foot-note">© 2026 SHMB</p>
   </div>
 </footer>
+
+<script>
+  (function () {
+    var btn = document.getElementById('nav-toggle');
+    var links = document.getElementById('nav-links');
+    if (!btn || !links) return;
+    btn.addEventListener('click', function () {
+      var open = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    links.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        links.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>

@@ -7,7 +7,7 @@ Static site for [shmbmarketing.ca](https://shmbmarketing.ca), deployed on Vercel
 | File | Page |
 |---|---|
 | `index.html` | Home |
-| `audit.html` | The Content Clarity Audit (offer page) |
+| `audit.html` | The Content Review (offer page) |
 | `about.html` | About / Sonya Berns |
 | `404.html` | Not-found page |
 

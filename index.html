@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SHMB Digital Marketing — Content System Strategist</title>
-<meta name="description" content="A content clarity audit for female service providers, coaches, and healers who are posting consistently but still not seeing it turn into clients.">
+<meta name="description" content="I help small business owners and service providers build sustainable marketing systems, combining strategy, AI tools, and workflows.">
 <link rel="canonical" href="https://shmbmarketing.ca/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,11 +92,30 @@
     font-weight: 500;
   }
   .nav-links a:hover { color: var(--text); text-decoration: none; }
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    padding: 4px;
+    align-items: center;
+    justify-content: center;
+  }
 
   @media (max-width: 640px) {
-    nav .wrap { flex-direction: column; align-items: flex-start; gap: 12px; padding-top: 14px; padding-bottom: 14px; }
-    .nav-links { gap: 16px; flex-wrap: wrap; }
-    .nav-links a { font-size: 13px; }
+    nav .wrap { flex-wrap: wrap; }
+    .nav-toggle { display: inline-flex; order: 2; }
+    .nav-links {
+      display: none;
+      width: 100%;
+      order: 3;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 14px;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 14px; padding: 10px 2px; border-top: 1px solid var(--line); }
   }
 
   /* ---------- HERO ---------- */
@@ -254,9 +273,11 @@
 <nav>
   <div class="wrap">
     <a class="nav-name" href="index.html" style="color:var(--text);">SHMB</a>
-    <div class="nav-links">
-      <a href="#who">Who It's For</a>
-      <a href="audit.html">The Audit</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="nav-links" id="nav-links">
+      <a href="audit.html">Content Review</a>
       <a href="about.html">About</a>
       <a href="#contact">Contact</a>
     </div>
@@ -265,11 +286,11 @@
 
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow">For Female Service Providers, Coaches &amp; Healers</span>
+    <span class="eyebrow">For Business Owners &amp; Service Providers</span>
     <h1>Your content isn't the problem. <span>Your system is.</span></h1>
-    <p class="lede">You've been showing up for months. The content's there. The clients still aren't. That's not a volume problem, it's a system problem, and it's fixable in one audit.</p>
+    <p class="lede">You've been showing up for months. The content's there. The clients still aren't. That's not a volume problem, it's a system problem, and it's fixable in one content review.</p>
     <div class="hero-ctas">
-      <a class="btn btn-fill" href="audit.html#contact">Book Your Audit</a>
+      <a class="btn btn-fill" href="audit.html#contact">Book Your Content Review</a>
     </div>
   </div>
 </header>
@@ -284,8 +305,9 @@
       <li>You've tried more Reels, a content calendar, a template pack. None of it moved the needle.</li>
       <li>You know your work changes lives. Your content isn't proving it.</li>
       <li>You're starting to wonder if social media just doesn't work for your kind of business.</li>
+      <li>Some days you wonder if you were stupid to start this, like the time and money you've put in is never going to amount to anything.</li>
     </ul>
-    <p class="section-close">If any of that sounds familiar, keep reading. This is exactly what the audit is built for.</p>
+    <p class="section-close">If any of that sounds familiar, keep reading. This is exactly what the content review is built for.</p>
   </div>
 </section>
 
@@ -301,14 +323,14 @@
   <div class="wrap">
     <span class="eyebrow">The Promise</span>
     <h2>What changes.</h2>
-    <p class="section-lede">A clear, conversion-ready profile and content direction, one audit away. The Content Clarity Audit tells you exactly what's working, what's silently costing you clients, and what to fix first, in priority order. No guesswork, no more posting and hoping.</p>
+    <p class="section-lede">A clear, conversion-ready profile and content direction, one review away. The Content Review tells you exactly what's working, what's silently costing you clients, and what to fix first, in priority order. No guesswork, no more posting and hoping.</p>
   </div>
 </section>
 
 <section id="audit">
   <div class="wrap">
     <span class="eyebrow">The Offer</span>
-    <h2>The Content Clarity Audit</h2>
+    <h2>The Content Review</h2>
     <div class="snapshot-card">
       <ul>
         <li>6P Scorecard</li>
@@ -318,7 +340,7 @@
       </ul>
       <p class="snapshot-price">Founding rate: $397 <span class="price-was">$597</span></p>
       <div class="snapshot-ctas">
-        <a class="btn btn-fill" href="audit.html#contact">Book Your Audit</a>
+        <a class="btn btn-fill" href="audit.html#contact">Book Your Content Review</a>
         <a class="btn btn-outline" href="audit.html#included">See Everything Included</a>
       </div>
     </div>
@@ -337,8 +359,8 @@
   <div class="wrap">
     <span class="eyebrow">Get In Touch</span>
     <h2>Ready to know exactly what's going on?</h2>
-    <p class="section-close" style="margin-bottom: 28px;">Looking for more than an audit? Full content system builds are taken on a case-by-case basis.</p>
-    <a class="btn btn-fill" href="audit.html#contact" style="margin-bottom: 40px; display: inline-block;">Book Your Audit</a>
+    <p class="section-close" style="margin-bottom: 28px;">Looking for more than a content review? Full content system builds are taken on a case-by-case basis.</p>
+    <a class="btn btn-fill" href="audit.html#contact" style="margin-bottom: 40px; display: inline-block;">Book Your Content Review</a>
     <div class="contact-row">
       <a href="mailto:info@shmbmarketing.ca">info@shmbmarketing.ca</a>
       <div class="social-icons">
@@ -356,6 +378,24 @@
     <p class="foot-note">© 2026 SHMB</p>
   </div>
 </footer>
+
+<script>
+  (function () {
+    var btn = document.getElementById('nav-toggle');
+    var links = document.getElementById('nav-links');
+    if (!btn || !links) return;
+    btn.addEventListener('click', function () {
+      var open = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    links.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        links.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
