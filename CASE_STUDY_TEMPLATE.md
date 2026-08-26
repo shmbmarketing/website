@@ -24,6 +24,8 @@ Example (Tremoring Pine Healing):
 
 **What I need:** the raw numbers plus the baseline you're measuring against. Get this wrong and the percentages won't be internally consistent (this happened once already) — so if there's any ambiguity about which starting point a % change is measured from, flag it rather than leaving it implied.
 
+**Next run for the same client:** the table already sits in a swipeable container (`.results-carousel`). A second table (e.g. "Days 31-60") slots in as another table next to the first and becomes swipeable automatically — no need to redesign anything, just send the new period's numbers the same way.
+
 ## 4. Before / After images
 Two profile screenshots. They'll get cropped to: nav bar → avatar + stats → bio + link. Cut off before any "Followed by…" row, action buttons, or post grid — just the clean identity/stats block.
 
