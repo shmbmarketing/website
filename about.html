@@ -275,28 +275,38 @@
   .img-placeholder.square { aspect-ratio: 1 / 1; }
   .img-placeholder.tall { aspect-ratio: 4 / 5; }
 
+  .validation-row {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
   .lead-img {
     display: block;
-    max-width: 320px;
+    max-width: 260px;
     width: 100%;
-    margin: 0 auto;
+    flex: 0 0 auto;
     border-radius: 4px;
     border: 1px solid var(--line);
+    cursor: zoom-in;
   }
   .proof-caption {
-    text-align: center;
     color: var(--text-dim);
-    font-size: 14px;
-    margin: 14px auto 0;
-    max-width: 480px;
+    font-size: 15px;
+    margin: 0;
+  }
+  @media (max-width: 640px) {
+    .validation-row { flex-direction: column; align-items: flex-start; }
+    .lead-img { max-width: 320px; margin: 0 auto; }
+    .proof-caption { text-align: left; }
   }
   .proof-shot {
     display: block;
     width: 100%;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     border-radius: 4px;
     border: 1px solid var(--line);
+    cursor: zoom-in;
   }
   .post-example-media {
     position: relative;
@@ -386,6 +396,13 @@
     color: var(--rose);
   }
   @media (max-width: 680px) { .proof-pair { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) {
+    .results-table th, .results-table td {
+      padding: 10px 8px;
+      font-size: 12.5px;
+      white-space: normal;
+    }
+  }
 
   .testimonial {
     background: var(--bg-card);
@@ -497,6 +514,26 @@
   }
   .social-icons a:hover { color: var(--rose); border-color: var(--rose); text-decoration: none; }
   .foot-note { margin-top: 50px; color: var(--text-faint); font-size: 13px; }
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.85);
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    cursor: zoom-out;
+  }
+  .lightbox-overlay.active { display: flex; }
+  .lightbox-overlay img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  }
 </style>
 </head>
 <body>
@@ -659,8 +696,10 @@
 
     <div class="proof-block reveal">
       <div class="proof-block-label">Industry Validation</div>
-      <img class="lead-img" src="assets/work/lead-david-berceli.png" alt="Instagram comment thread: David Berceli, creator of TRE, commenting 'Great video. Thanks.' on a Tremoring Pine Healing reel">
-      <p class="proof-caption">On Day 5, the global founder of TRE commented on one of the reels — organic validation the content was landing in exactly the right community.</p>
+      <div class="validation-row">
+        <img class="lead-img" src="assets/work/lead-david-berceli.png" alt="Instagram comment thread: David Berceli, creator of TRE, commenting 'Great video. Thanks.' on a Tremoring Pine Healing reel">
+        <p class="proof-caption">On Day 5, the global founder of TRE commented on one of the reels — organic validation the content was landing in exactly the right community.</p>
+      </div>
     </div>
 
     <div class="proof-block testimonial reveal">
@@ -718,7 +757,7 @@
       </div>
       <div class="path-card reveal">
         <h3>Want your content to sound like you, not like everyone else's AI content?</h3>
-        <p>I build content systems for founder-led brands that keep your real voice, beliefs, and stories in the work, using AI to move fast without losing what makes it yours.</p>
+        <p>I build content systems that keep your real voice, beliefs, and stories in the work, using AI to move fast without losing what makes it yours.</p>
         <a class="btn btn-outline" href="#contact">Let's talk</a>
       </div>
     </div>
@@ -752,6 +791,10 @@
   </div>
 </footer>
 
+<div class="lightbox-overlay" id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <script>
   (function () {
     var nodes = document.querySelectorAll('.fw-node, .fw-arrow, .reveal');
@@ -770,6 +813,28 @@
       });
     }, { threshold: 0.2 });
     nodes.forEach(function (n) { observer.observe(n); });
+  })();
+
+  (function () {
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightbox-img');
+    if (!lightbox) return;
+    function open(img) {
+      lightboxImg.src = img.currentSrc || img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('active');
+    }
+    function close() {
+      lightbox.classList.remove('active');
+      lightboxImg.src = '';
+    }
+    document.querySelectorAll('.proof-shot, .lead-img').forEach(function (img) {
+      img.addEventListener('click', function () { open(img); });
+    });
+    lightbox.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') close();
+    });
   })();
 </script>
 
