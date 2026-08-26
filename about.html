@@ -458,13 +458,13 @@
     gap: 24px;
     margin-bottom: 8px;
   }
-  .footer-headshot.img-placeholder {
+  .footer-headshot {
     width: 88px;
     height: 88px;
     border-radius: 50%;
     flex: 0 0 auto;
-    font-size: 11px;
-    padding: 8px;
+    object-fit: cover;
+    border: 1px solid var(--line);
   }
   footer h2 { font-size: clamp(26px, 3.4vw, 34px); margin-bottom: 20px; }
   .contact-row {
@@ -699,7 +699,7 @@
 <footer id="contact">
   <div class="wrap">
     <div class="footer-top reveal">
-      <div class="footer-headshot img-placeholder">Headshot</div>
+      <img class="footer-headshot" src="assets/headshot.jpg" alt="Sonya Berns">
       <div>
         <span class="eyebrow" style="margin-bottom:6px;">Get In Touch</span>
         <h2 style="margin-bottom:0;">Let's figure something out.</h2>
