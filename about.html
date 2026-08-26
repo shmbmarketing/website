@@ -233,6 +233,15 @@
     display: block;
   }
   .method-card p { color: var(--text-dim); font-size: 14.5px; }
+  .method-pull {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    line-height: 1.4;
+    color: var(--text);
+    max-width: 640px;
+    margin: 44px 0 0;
+  }
+  .method-pull .teal { color: var(--rose); }
   @media (max-width: 640px) { .method-grid { grid-template-columns: 1fr; } }
 
   /* ---------- LINKEDIN BRIDGE ---------- */
@@ -600,7 +609,6 @@
       <div class="fw-arrow reveal">→</div>
       <div class="fw-node reveal"><div class="num">03</div><div class="label">It Ships</div></div>
     </div>
-    <p class="fw-caption reveal">The result isn't AI slop or a generic voice. It's still your story, just faster to get there.</p>
 
     <div class="method-grid">
       <div class="method-card reveal">
@@ -612,6 +620,8 @@
         <p>The script goes back again. This second round is where it gets refined with their actual voice, their beliefs, their stories, not a generic version of them.</p>
       </div>
     </div>
+
+    <p class="method-pull">The result isn't AI slop or a generic voice. It's <span class="teal">still your story</span>, just faster to get there.</p>
   </div>
 </section>
 
