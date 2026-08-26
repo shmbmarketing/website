@@ -196,9 +196,17 @@
     flex: 0 0 auto;
   }
   @media (max-width: 900px) {
-    .framework { flex-direction: column; align-items: stretch; }
-    .fw-arrow { transform: rotate(90deg); padding: 6px 0; align-self: center; }
-    .fw-node { flex: none; width: 100%; }
+    .framework {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+    }
+    .framework::-webkit-scrollbar { display: none; }
+    .fw-node { flex: 0 0 78%; min-width: 0; scroll-snap-align: center; }
+    .fw-arrow { flex: 0 0 auto; }
   }
 
   /* ---------- METHOD ---------- */
@@ -335,6 +343,11 @@
   .post-example-media:hover .play-overlay { background: rgba(0, 0, 0, 0.35); }
   .post-example-media:hover .play-overlay svg { opacity: 1; }
   /* ---------- THE WORK (PROOF) ---------- */
+  .case-divider {
+    border-top: 1px solid var(--line);
+    padding-top: 28px;
+    margin-top: 28px;
+  }
   .case-tag {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 600;
@@ -345,8 +358,6 @@
   .case-headline {
     font-size: 22px;
     margin: 4px 0 28px;
-    padding-bottom: 28px;
-    border-bottom: 1px solid var(--line);
   }
   .proof-lead { margin-bottom: 44px; }
   .proof-pair {
@@ -395,7 +406,19 @@
     font-weight: 600;
     color: var(--rose);
   }
-  @media (max-width: 680px) { .proof-pair { grid-template-columns: 1fr; } }
+  @media (max-width: 680px) {
+    .proof-pair {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+    }
+    .proof-pair::-webkit-scrollbar { display: none; }
+    .proof-pair > div { flex: 0 0 85%; scroll-snap-align: center; }
+  }
   @media (max-width: 520px) {
     .results-table th, .results-table td {
       padding: 10px 8px;
@@ -428,7 +451,19 @@
   .post-example .img-placeholder { margin-bottom: 10px; }
   .post-example .post-hook { font-size: 14px; color: var(--text); margin-bottom: 4px; }
   .post-example .post-stats { color: var(--text-faint); font-size: 12.5px; }
-  @media (max-width: 720px) { .post-examples { grid-template-columns: 1fr; } }
+  @media (max-width: 720px) {
+    .post-examples {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+    }
+    .post-examples::-webkit-scrollbar { display: none; }
+    .post-example { flex: 0 0 72%; scroll-snap-align: center; }
+  }
 
   /* ---------- TWO PATHS ---------- */
   .paths {
@@ -452,7 +487,19 @@
     font-size: 15px;
     margin-bottom: 22px;
   }
-  @media (max-width: 680px) { .paths { grid-template-columns: 1fr; } }
+  @media (max-width: 680px) {
+    .paths {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+    }
+    .paths::-webkit-scrollbar { display: none; }
+    .path-card { flex: 0 0 85%; scroll-snap-align: center; }
+  }
 
   /* ---------- EXPERIENCE ---------- */
   .timeline { border-left: 1px solid var(--line); padding-left: 28px; }
@@ -551,7 +598,7 @@
 
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow">Content System Strategist, AI &amp; Storytelling</span>
+    <span class="eyebrow">Content System Strategist,<br>AI &amp; Storytelling</span>
     <h1>I make <span>messy things</span> make sense.</h1>
     <p class="lede">After eight years in social services, I brought the same dedication, problem-solving, structure, and real human connection to content strategy. I build content with a self-built AI-assisted content operating system, backed by a Notion library of story arcs and templates, that turns research into scripts while keeping every piece anchored in the client's real voice, values, and stories.</p>
     <div class="hero-ctas">
@@ -662,7 +709,7 @@
     <span class="eyebrow">The Work</span>
     <h2>Real client results, not hypotheticals.</h2>
 
-    <div class="proof-lead reveal">
+    <div class="proof-lead reveal case-divider">
       <div class="case-tag">Case Study: Tremoring Pine Healing (Health &amp; Wellness)</div>
       <h3 class="case-headline">What we built together.</h3>
       <div class="results-table-wrap">
