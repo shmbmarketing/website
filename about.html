@@ -129,7 +129,7 @@
     border: 1px solid var(--rose);
   }
   .btn-fill { background: var(--rose); color: #06120C; }
-  .btn-fill:hover { background: #24B486; text-decoration: none; }
+  .btn-fill:hover { filter: brightness(0.88); text-decoration: none; }
   .btn-outline { color: var(--rose); }
   .btn-outline:hover { background: var(--rose-dim); text-decoration: none; }
 
@@ -246,8 +246,26 @@
 
   /* ---------- LINKEDIN BRIDGE ---------- */
   .bridge { margin-top: 56px; text-align: center; }
-  .bridge p { color: var(--text-dim); font-size: 16px; margin-bottom: 8px; }
-  .bridge a { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 17px; }
+  .bridge-link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+  }
+  .bridge-link p { color: var(--text-dim); font-size: 16px; margin: 0; }
+  .bridge-link:hover p { color: var(--text); text-decoration: none; }
+  .bridge-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    color: var(--rose);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bridge-link:hover .bridge-icon { border-color: var(--rose); }
   .scroll-down { margin-top: 28px; color: var(--rose); font-size: 20px; }
 
   /* ---------- IMAGE PLACEHOLDER ---------- */
@@ -401,13 +419,6 @@
   .post-example .post-stats { color: var(--text-faint); font-size: 12.5px; }
   @media (max-width: 720px) { .post-examples { grid-template-columns: 1fr; } }
 
-  .systems-proof-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    margin-bottom: 18px;
-  }
-  @media (max-width: 680px) { .systems-proof-grid { grid-template-columns: 1fr; } }
   .systems-caption { color: var(--text-dim); font-size: 15px; max-width: 560px; }
 
   /* ---------- TWO PATHS ---------- */
@@ -512,12 +523,12 @@
 
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow">Content Strategist &amp; Systems Builder</span>
+    <span class="eyebrow">Content System Strategist, AI &amp; Storytelling</span>
     <h1>I make <span>messy things</span> make sense.</h1>
     <p class="lede">Eight years turning complicated situations, policy, people, half-finished ideas, into something clear enough to act on. Now I build content systems and run marketing channels the same way: research first, structure second, AI to move fast, and a human always making the final call.</p>
     <div class="hero-ctas">
       <a class="btn btn-fill" href="#paths">Work With Me</a>
-      <a class="btn btn-outline" href="#contact">Get In Touch</a>
+      <a class="btn btn-outline" href="#work">See My Work</a>
     </div>
   </div>
 </header>
@@ -551,8 +562,12 @@
       -->
     </div>
     <div class="bridge reveal">
-      <p>Full professional history on LinkedIn.</p>
-      <a href="https://www.linkedin.com/in/sonya-berns/" target="_blank" rel="noopener">→ linkedin.com/in/sonya-berns</a>
+      <a class="bridge-link" href="https://www.linkedin.com/in/sonya-berns/" target="_blank" rel="noopener">
+        <p>Full professional history on LinkedIn.</p>
+        <span class="bridge-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.58c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.68H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13ZM7.12 20.45H3.55V9h3.57v11.45Z"/></svg>
+        </span>
+      </a>
       <div class="scroll-down">↓</div>
     </div>
   </div>
@@ -589,6 +604,8 @@
     <span class="eyebrow">The Method</span>
     <h2>AI-assisted. Not AI-created.</h2>
     <p class="section-lede">I use AI daily to draft, research, and move fast. But the real work happens at two points where the human input goes in, and it's never optional.</p>
+
+    <img class="analytics-img reveal" src="assets/work/systems-mechanism.png" alt="Diagram: how a client brief moves through the AI-assisted content system" style="margin-bottom: 32px;">
 
     <div class="method-grid">
       <div class="method-card reveal">
@@ -671,10 +688,7 @@
 
     <div class="proof-block">
       <div class="proof-block-label">Systems Proof</div>
-      <div class="systems-proof-grid">
-        <img class="analytics-img reveal" src="assets/work/systems-mechanism.png" alt="Diagram: how a client brief moves through the SHMB content system">
-        <img class="analytics-img reveal" src="assets/work/systems-pipeline.png" alt="Diagram: the full SHMB content pipeline, from idea to ready-to-film">
-      </div>
+      <img class="analytics-img reveal" src="assets/work/systems-pipeline.png" alt="Diagram: the full SHMB content pipeline, from idea to ready-to-film" style="margin-bottom: 18px;">
       <p class="systems-caption">The infrastructure behind every client engagement — not a template, a working system.</p>
     </div>
   </div>
