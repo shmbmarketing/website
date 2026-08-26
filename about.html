@@ -244,19 +244,6 @@
   .method-pull .teal { color: var(--rose); }
   @media (max-width: 640px) { .method-grid { grid-template-columns: 1fr; } }
 
-  /* ---------- BRIEF FLOW (interactive) ---------- */
-  .brief-step { cursor: pointer; user-select: none; }
-  .brief-step.active { border-color: var(--rose); background: var(--rose-dim); }
-  .brief-flow-detail {
-    margin-top: 20px;
-    color: var(--text-dim);
-    font-size: 15px;
-    max-width: 600px;
-    min-height: 44px;
-    border-left: 2px solid var(--rose);
-    padding-left: 18px;
-  }
-
   /* ---------- LINKEDIN BRIDGE ---------- */
   .bridge { margin-top: 56px; text-align: center; }
   .bridge-link {
@@ -615,26 +602,14 @@
     <h2>AI-assisted. Not AI-created.</h2>
     <p class="section-lede">I use AI daily to draft, research, and move fast. But the real work happens at two points where the human input goes in, and it's never optional.</p>
 
-    <p class="section-lede" style="margin-bottom: 24px;">Here's what that actually looks like from your side. Click a step.</p>
-
-    <div class="framework brief-flow" id="briefFlow">
-      <div class="fw-node brief-step active" role="button" tabindex="0" aria-pressed="true" data-detail="You react with a quick Keep, New Angle, or Pass on each idea. No login, no account, just a link.">
-        <div class="num">01</div><div class="label">You React</div>
-      </div>
-      <div class="fw-arrow">→</div>
-      <div class="fw-node brief-step" role="button" tabindex="0" aria-pressed="false" data-detail="Only what you actually approved gets scripted, using the structure and story angles you already saw.">
-        <div class="num">02</div><div class="label">It's Scripted</div>
-      </div>
-      <div class="fw-arrow">→</div>
-      <div class="fw-node brief-step" role="button" tabindex="0" aria-pressed="false" data-detail="If it needs something only you know, a real story, a specific belief, you drop in a quick note, voice memo, or video.">
-        <div class="num">03</div><div class="label">You Add Your Voice</div>
-      </div>
-      <div class="fw-arrow">→</div>
-      <div class="fw-node brief-step" role="button" tabindex="0" aria-pressed="false" data-detail="The draft comes back already sounding like you: ready to film, not a generic first pass from a machine.">
-        <div class="num">04</div><div class="label">It Ships</div>
-      </div>
+    <div class="framework">
+      <div class="fw-node reveal"><div class="num">01</div><div class="label">You React</div></div>
+      <div class="fw-arrow reveal">→</div>
+      <div class="fw-node reveal"><div class="num">02</div><div class="label">It's Scripted</div></div>
+      <div class="fw-arrow reveal">→</div>
+      <div class="fw-node reveal"><div class="num">03</div><div class="label">It Ships</div></div>
     </div>
-    <p class="brief-flow-detail" id="briefFlowDetail">You react with a quick Keep, New Angle, or Pass on each idea. No login, no account, just a link.</p>
+    <p class="fw-caption reveal">A quick reaction on the idea, your real voice where it counts, and a draft that already sounds like you.</p>
 
     <div class="method-grid">
       <div class="method-card reveal">
@@ -787,30 +762,6 @@
       });
     }, { threshold: 0.2 });
     nodes.forEach(function (n) { observer.observe(n); });
-  })();
-
-  (function () {
-    var steps = document.querySelectorAll('.brief-step');
-    var detail = document.getElementById('briefFlowDetail');
-    if (!steps.length || !detail) return;
-    function activate(step) {
-      steps.forEach(function (s) {
-        s.classList.remove('active');
-        s.setAttribute('aria-pressed', 'false');
-      });
-      step.classList.add('active');
-      step.setAttribute('aria-pressed', 'true');
-      detail.textContent = step.getAttribute('data-detail');
-    }
-    steps.forEach(function (step) {
-      step.addEventListener('click', function () { activate(step); });
-      step.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          activate(step);
-        }
-      });
-    });
   })();
 </script>
 
