@@ -293,21 +293,10 @@
   .proof-shot {
     display: block;
     width: 100%;
-    height: 420px;
-    object-fit: contain;
-    background: var(--bg-card);
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
     border-radius: 4px;
     border: 1px solid var(--line);
-    padding: 12px;
-    box-sizing: border-box;
-  }
-  .analytics-img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 4px;
-    border: 1px solid var(--line);
-    background: var(--bg-card);
   }
   .post-example-media {
     position: relative;
@@ -335,8 +324,6 @@
   .play-overlay svg { opacity: 0; transition: opacity 0.2s ease; }
   .post-example-media:hover .play-overlay { background: rgba(0, 0, 0, 0.35); }
   .post-example-media:hover .play-overlay svg { opacity: 1; }
-  @media (max-width: 680px) { .proof-shot { height: 320px; } }
-
   /* ---------- THE WORK (PROOF) ---------- */
   .case-tag {
     font-family: 'Space Grotesk', sans-serif;
@@ -357,14 +344,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 16px;
     margin-bottom: 12px;
-  }
-  .proof-pair-label {
-    text-align: center;
-    color: var(--text-faint);
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-top: 10px;
   }
   .proof-block { margin-bottom: 56px; }
   .proof-block-label {
@@ -433,8 +412,6 @@
   .post-example .post-hook { font-size: 14px; color: var(--text); margin-bottom: 4px; }
   .post-example .post-stats { color: var(--text-faint); font-size: 12.5px; }
   @media (max-width: 720px) { .post-examples { grid-template-columns: 1fr; } }
-
-  .systems-caption { color: var(--text-dim); font-size: 15px; max-width: 560px; }
 
   /* ---------- TWO PATHS ---------- */
   .paths {
@@ -649,7 +626,7 @@
     <h2>Real client results, not hypotheticals.</h2>
 
     <div class="proof-lead reveal">
-      <div class="case-tag">Case Study: Tremoring Pine Healing</div>
+      <div class="case-tag">Case Study: Tremoring Pine Healing (Health &amp; Wellness)</div>
       <h3 class="case-headline">What we built together.</h3>
       <div class="results-table-wrap">
         <table class="results-table">
@@ -673,20 +650,22 @@
       <div class="proof-pair">
         <div class="reveal">
           <img class="proof-shot" src="assets/work/before-30day.jpg" alt="Tremoring Pine Healing Instagram profile before the 30-day content system">
-          <div class="proof-pair-label">Before</div>
         </div>
         <div class="reveal">
           <img class="proof-shot" src="assets/work/after-30day.jpg" alt="Tremoring Pine Healing Instagram profile after the 30-day content system — 131 followers">
-          <div class="proof-pair-label">After</div>
         </div>
       </div>
-      <img class="analytics-img reveal" src="assets/work/analytics-30day.jpg" alt="30-day Instagram account insights for Tremoring Pine Healing" style="margin-top:16px;">
     </div>
 
     <div class="proof-block reveal">
       <div class="proof-block-label">Industry Validation</div>
       <img class="lead-img" src="assets/work/lead-david-berceli.jpg" alt="Instagram screenshot: David Berceli, creator of TRE, engaging with a Tremoring Pine Healing reel">
-      <p class="proof-caption">On Day 5, the global founder of TRE liked one of the reels — organic validation the content was landing in exactly the right community.</p>
+      <p class="proof-caption">On Day 5, the global founder of TRE commented on one of the reels — organic validation the content was landing in exactly the right community.</p>
+    </div>
+
+    <div class="proof-block testimonial reveal">
+      <p class="quote">"Sonya helped to launch my social media prior to starting my business. She listened to my vision and was able to implement strategies that aligned with my needs. She is wonderful to work with and I would highly recommend her to anyone who needs direction in their marketing."</p>
+      <p class="attribution">— Jen H., Business Owner</p>
     </div>
 
     <div class="proof-block">
@@ -723,17 +702,6 @@
           <p class="post-stats">378 views · 4 saves</p>
         </div>
       </div>
-    </div>
-
-    <div class="proof-block testimonial reveal">
-      <p class="quote">"Sonya helped to launch my social media prior to starting my business. She listened to my vision and was able to implement strategies that aligned with my needs. She is wonderful to work with and I would highly recommend her to anyone who needs direction in their marketing."</p>
-      <p class="attribution">— Jen H., Business Owner</p>
-    </div>
-
-    <div class="proof-block">
-      <div class="proof-block-label">Systems Proof</div>
-      <img class="analytics-img reveal" src="assets/work/systems-pipeline.png" alt="Diagram: the full SHMB content pipeline, from idea to ready-to-film" style="margin-bottom: 18px;">
-      <p class="systems-caption">The infrastructure behind every client engagement — not a template, a working system.</p>
     </div>
   </div>
 </section>
