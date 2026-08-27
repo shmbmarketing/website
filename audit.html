@@ -176,6 +176,33 @@
     margin-bottom: 56px;
   }
 
+  /* ---------- SOUND FAMILIAR: check list ---------- */
+  .check-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 640px;
+    margin: 8px 0 32px;
+  }
+  .check-list li {
+    display: flex;
+    gap: 12px;
+    color: var(--text-dim);
+    font-size: 15.5px;
+    line-height: 1.55;
+  }
+  .check-list li::before {
+    content: "—";
+    color: var(--rose);
+    flex-shrink: 0;
+  }
+  .section-close {
+    font-size: 16px;
+    color: var(--text);
+    max-width: 600px;
+  }
+
   /* ---------- OFFER GRID ---------- */
   .offer-grid {
     display: grid;
@@ -337,8 +364,12 @@
   <div class="wrap">
     <span class="eyebrow">Sound Familiar?</span>
     <h2 class="reveal">"I'm posting consistently. Nothing is working."</h2>
-    <p class="section-lede reveal">You don't know what to post anymore. Engagement is inconsistent, and none of it is turning into leads. Some days it feels like you're doing everything right and still invisible, exhausted, second-guessing every caption, wondering if social media even works for a business like yours. That's not a lack of effort. It's a lack of a clear diagnosis, and that's exactly what the Quick Audit gives you.</p>
-    <p class="section-lede reveal" style="margin-bottom: 0;">Maybe you've already stitched something together yourself: an AI writing tool, a scheduler, Canva for graphics. That's real money every month, and it still doesn't tell you why none of it is converting into clients. The Quick Audit is a one-time $147, and it tells you exactly that.</p>
+    <ul class="check-list reveal">
+      <li>Engagement is inconsistent, and none of it is turning into leads.</li>
+      <li>Some days it feels like you're doing everything right and still invisible.</li>
+      <li>You've already tried stitching something together yourself: an AI writing tool, a scheduler, Canva for graphics. That's real money every month.</li>
+    </ul>
+    <p class="section-close reveal">That's not a lack of effort. It's a lack of a clear diagnosis, and that's exactly what the Quick Audit gives you.</p>
   </div>
 </section>
 
@@ -350,7 +381,7 @@
     <div class="price-card reveal">
       <span class="price-tag">$147</span>
       <p class="price-note">Delivered as a written PDF scorecard, 5–7 business days.</p>
-      <p style="color:var(--text-dim); font-size:14.5px; margin-bottom: 22px;">One new client from a cleaner profile and sharper content pays this back many times over. This isn't a cost, it's a diagnosis that tells you exactly where your leads are going.</p>
+      <p style="color:var(--text-dim); font-size:14.5px; margin-bottom: 22px;">No retainer, no subscription. A one-time flat fee for a clear, honest read on where things actually stand.</p>
       <a class="btn btn-fill" href="https://app.hellobonsai.com/f/85e46c4db816251" target="_blank" rel="noopener">Book Your Quick Audit</a>
     </div>
   </div>

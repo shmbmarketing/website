@@ -373,6 +373,9 @@
     color: var(--rose);
     margin-bottom: 10px;
   }
+  @media (max-width: 640px) {
+    .case-tag-industry { display: block; margin-top: 2px; }
+  }
   .case-headline {
     font-size: 22px;
     margin: 4px 0 28px;
@@ -463,6 +466,24 @@
       white-space: normal;
     }
   }
+  .info-tip { border-bottom: 1px dotted var(--text-faint); cursor: help; }
+  .info-bubble-float {
+    position: fixed;
+    max-width: 220px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 10px 12px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--text-dim);
+    white-space: normal;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    z-index: 50;
+  }
+  .info-bubble-float.visible { opacity: 1; }
 
   .testimonial {
     background: var(--bg-card);
@@ -753,7 +774,7 @@
     <h2 class="reveal">Real client results, not hypotheticals.</h2>
 
     <div class="proof-lead reveal case-divider">
-      <div class="case-tag">Case Study: Tremoring Pine Healing (Health &amp; Wellness)</div>
+      <div class="case-tag">Case Study: Tremoring Pine Healing <span class="case-tag-industry">(Health &amp; Wellness)</span></div>
       <h3 class="case-headline">What we built together.</h3>
       <div class="results-carousel">
         <div class="results-table-wrap">
@@ -767,7 +788,7 @@
               <tr><td>Avg. Reach per Day</td><td>228</td><td class="rose">+781%</td></tr>
               <tr><td>Total Saves (Reels)</td><td>44</td><td>First 30 Days</td></tr>
               <tr><td>Total Shares (Reels)</td><td>45</td><td>First 30 Days</td></tr>
-              <tr><td>Inbound Enquiries (Leads)</td><td>1</td><td>First Inbound Lead</td></tr>
+              <tr><td><span class="info-tip" tabindex="0" data-tip="Counts publicly visible inquiries only, comments and link clicks. Direct messages aren't included.">Inbound Enquiries (Leads)<sup>*</sup></span></td><td>1</td><td>First Inbound Lead</td></tr>
             </tbody>
           </table>
         </div>
@@ -925,6 +946,57 @@
       });
     }, { threshold: 0.2 });
     nodes.forEach(function (n) { observer.observe(n); });
+  })();
+
+  (function () {
+    var tips = document.querySelectorAll('.info-tip');
+    if (!tips.length) return;
+    var bubble = document.createElement('div');
+    bubble.className = 'info-bubble-float';
+    document.body.appendChild(bubble);
+    var clickedOpen = null;
+
+    function showTip(el) {
+      bubble.textContent = el.getAttribute('data-tip');
+      bubble.classList.add('visible');
+      var tipRect = el.getBoundingClientRect();
+      var bubbleRect = bubble.getBoundingClientRect();
+      var left = tipRect.left + tipRect.width / 2 - bubbleRect.width / 2;
+      left = Math.max(8, Math.min(left, window.innerWidth - bubbleRect.width - 8));
+      var top = tipRect.top - bubbleRect.height - 10;
+      if (top < 8) top = tipRect.bottom + 10;
+      bubble.style.left = left + 'px';
+      bubble.style.top = top + 'px';
+    }
+    function hideTip() {
+      bubble.classList.remove('visible');
+    }
+
+    tips.forEach(function (el) {
+      el.addEventListener('mouseenter', function () { if (!clickedOpen) showTip(el); });
+      el.addEventListener('mouseleave', function () { if (!clickedOpen) hideTip(); });
+      el.addEventListener('focus', function () { showTip(el); });
+      el.addEventListener('blur', function () { if (clickedOpen !== el) hideTip(); });
+      el.addEventListener('click', function (e) {
+        e.stopPropagation();
+        e.preventDefault();
+        if (clickedOpen === el) {
+          clickedOpen = null;
+          hideTip();
+        } else {
+          clickedOpen = el;
+          showTip(el);
+        }
+      });
+    });
+    document.addEventListener('click', function () {
+      clickedOpen = null;
+      hideTip();
+    });
+    window.addEventListener('scroll', function () {
+      clickedOpen = null;
+      hideTip();
+    }, true);
   })();
 
   (function () {
