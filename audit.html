@@ -61,6 +61,18 @@
   a:hover { text-decoration: underline; }
   a:focus-visible, button:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
 
+  /* ---------- REVEAL ON SCROLL (shared pattern, reused everywhere) ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .reveal.revealed { opacity: 1; transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { transition: none; opacity: 1; transform: none; }
+  }
+
   /* ---------- NAV ---------- */
   nav {
     position: sticky;
@@ -197,6 +209,7 @@
     }
     .offer-grid::-webkit-scrollbar { display: none; }
     .offer-item { flex: 0 0 85%; scroll-snap-align: center; }
+    .offer-grid .reveal { opacity: 1; transform: none; }
   }
 
   .price-card {
@@ -300,41 +313,41 @@
 <section id="included">
   <div class="wrap">
     <span class="eyebrow">What's Included</span>
-    <h2>Three deliverables, one clear picture of what's working and what isn't.</h2>
+    <h2 class="reveal">Three deliverables, one clear picture of what's working and what isn't.</h2>
 
     <div class="offer-grid">
-      <div class="offer-item">
+      <div class="offer-item reveal">
         <h4>6P Scorecard</h4>
         <p>Six checks: who this is for, what problem you solve, what you promise, what proves it, how the offer is presented, and whether your profile itself converts. Each one scored Active, Weak, or Missing, with a clear next step named.</p>
       </div>
-      <div class="offer-item">
+      <div class="offer-item reveal">
         <h4>Bio Teardown + Rewrite</h4>
         <p>Your current bio broken down against the 3P formula, then rewritten so it actually answers who this is for, what they get, and what to do next.</p>
       </div>
-      <div class="offer-item">
+      <div class="offer-item reveal">
         <h4>Top 3 Priorities</h4>
         <p>The three highest-leverage changes to make first, in order. What to change, why it matters, and how to do it.</p>
       </div>
     </div>
-    <p style="color:var(--text-dim); font-size:14.5px; margin-top:22px;">Optional: a 30-minute walkthrough call to go over the findings, <strong style="color:var(--text);">+$50</strong>.</p>
+    <p class="reveal" style="color:var(--text-dim); font-size:14.5px; margin-top:22px;">Optional: a 30-minute walkthrough call to go over the findings, <strong style="color:var(--text);">+$50</strong>.</p>
   </div>
 </section>
 
 <section id="familiar">
   <div class="wrap">
     <span class="eyebrow">Sound Familiar?</span>
-    <h2>"I'm posting consistently. Nothing is working."</h2>
-    <p class="section-lede">You don't know what to post anymore. Engagement is inconsistent, and none of it is turning into leads. Some days it feels like you're doing everything right and still invisible, exhausted, second-guessing every caption, wondering if social media even works for a business like yours. That's not a lack of effort. It's a lack of a clear diagnosis, and that's exactly what the Quick Audit gives you.</p>
-    <p class="section-lede" style="margin-bottom: 0;">Maybe you've already stitched something together yourself: an AI writing tool, a scheduler, Canva for graphics. That's real money every month, and it still doesn't tell you why none of it is converting into clients. The Quick Audit is a one-time $147, and it tells you exactly that.</p>
+    <h2 class="reveal">"I'm posting consistently. Nothing is working."</h2>
+    <p class="section-lede reveal">You don't know what to post anymore. Engagement is inconsistent, and none of it is turning into leads. Some days it feels like you're doing everything right and still invisible, exhausted, second-guessing every caption, wondering if social media even works for a business like yours. That's not a lack of effort. It's a lack of a clear diagnosis, and that's exactly what the Quick Audit gives you.</p>
+    <p class="section-lede reveal" style="margin-bottom: 0;">Maybe you've already stitched something together yourself: an AI writing tool, a scheduler, Canva for graphics. That's real money every month, and it still doesn't tell you why none of it is converting into clients. The Quick Audit is a one-time $147, and it tells you exactly that.</p>
   </div>
 </section>
 
 <section id="pricing">
   <div class="wrap">
     <span class="eyebrow">Pricing</span>
-    <h2>An easy yes, not a big commitment.</h2>
+    <h2 class="reveal">An easy yes, not a big commitment.</h2>
 
-    <div class="price-card">
+    <div class="price-card reveal">
       <span class="price-tag">$147</span>
       <p class="price-note">Delivered as a video walkthrough and written scorecard, 5–7 business days.</p>
       <p style="color:var(--text-dim); font-size:14.5px; margin-bottom: 22px;">One new client from a cleaner profile and sharper content pays this back many times over. This isn't a cost, it's a diagnosis that tells you exactly where your leads are going.</p>
@@ -345,14 +358,14 @@
 
 <footer id="contact">
   <div class="wrap">
-    <div class="footer-top">
+    <div class="footer-top reveal">
       <img class="footer-headshot" src="assets/headshot.jpg" alt="Sonya Berns">
       <div>
         <span class="eyebrow" style="margin-bottom:6px;">Get In Touch</span>
         <h2 style="margin-bottom:0;">Ready to find out what's actually going on with your content?</h2>
       </div>
     </div>
-    <p style="color:var(--text-dim); font-size:15px; margin-top:24px; margin-bottom:28px;">Looking for more than a quick read? Ongoing systems and strategy work is available case-by-case.</p>
+    <p class="reveal" style="color:var(--text-dim); font-size:15px; margin-top:24px; margin-bottom:28px;">Looking for more than a quick read? Ongoing systems and strategy work is available case-by-case.</p>
     <div class="contact-row">
       <a href="mailto:info@shmbmarketing.ca">info@shmbmarketing.ca</a>
       <div class="social-icons">
@@ -386,6 +399,25 @@
         btn.setAttribute('aria-expanded', 'false');
       });
     });
+  })();
+</script>
+<script>
+  (function () {
+    var nodes = document.querySelectorAll('.reveal');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      nodes.forEach(function (n) { n.classList.add('revealed'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    nodes.forEach(function (n) { observer.observe(n); });
   })();
 </script>
 
