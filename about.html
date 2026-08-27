@@ -466,7 +466,28 @@
       white-space: normal;
     }
   }
-  .info-tip { border-bottom: 1px dotted var(--text-faint); cursor: help; }
+  .info-tip {
+    cursor: help;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid var(--rose);
+    color: var(--rose);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 10px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1;
+  }
   .info-bubble-float {
     position: fixed;
     max-width: 220px;
@@ -788,7 +809,7 @@
               <tr><td>Avg. Reach per Day</td><td>228</td><td class="rose">+781%</td></tr>
               <tr><td>Total Saves (Reels)</td><td>44</td><td>First 30 Days</td></tr>
               <tr><td>Total Shares (Reels)</td><td>45</td><td>First 30 Days</td></tr>
-              <tr><td><span class="info-tip" tabindex="0" data-tip="Counts publicly visible inquiries only, comments and link clicks. Direct messages aren't included.">Inbound Enquiries (Leads)<sup>*</sup></span></td><td>1</td><td>First Inbound Lead</td></tr>
+              <tr><td><span class="info-tip" tabindex="0" data-tip="Counts publicly visible responses to a direct, targeted CTA only. Link clicks and direct messages aren't included.">Inbound Enquiries (Leads) <span class="info-icon" aria-hidden="true">i</span></span></td><td>1</td><td>First Inbound Lead</td></tr>
             </tbody>
           </table>
         </div>
