@@ -13,10 +13,8 @@
   :root {
     --bg: #1C1917;
     --bg-card: #2A2521;
-    --bg-card-2: #322C27;
     --rose: #C08A7D;
     --rose-dim: #3D2C27;
-    --sage: #9CA88C;
     --text: #F3EEE7;
     --text-dim: #B3A99E;
     --text-faint: #7A7067;
@@ -84,6 +82,7 @@
     font-weight: 600;
     font-size: 16px;
     letter-spacing: 0.02em;
+    color: var(--text);
   }
   .nav-links { display: flex; gap: 28px; }
   .nav-links a {
@@ -306,11 +305,12 @@
 
 <nav>
   <div class="wrap">
-    <a class="nav-name" href="index.html" style="color:var(--text);">SHMB</a>
+    <a class="nav-name" href="index.html">SHMB</a>
     <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
     <div class="nav-links" id="nav-links">
+      <a href="index.html">Home</a>
       <a href="audit.html">Quick Audit</a>
       <a href="about.html">About</a>
       <a href="#contact">Contact</a>
