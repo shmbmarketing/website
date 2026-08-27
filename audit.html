@@ -185,7 +185,19 @@
     color: var(--text);
   }
   .offer-item p { color: var(--text-dim); font-size: 14px; }
-  @media (max-width: 640px) { .offer-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) {
+    .offer-grid {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+    }
+    .offer-grid::-webkit-scrollbar { display: none; }
+    .offer-item { flex: 0 0 85%; scroll-snap-align: center; }
+  }
 
   .price-card {
     background: var(--bg-card);
@@ -277,7 +289,7 @@
   <div class="wrap">
     <span class="eyebrow">The Quick Audit</span>
     <h1>Know exactly what's <span>costing you clients.</span></h1>
-    <p class="lede">A fast, honest read on your profile and content: the 6P Scorecard, a bio teardown and rewrite, and the 3 fixes to make first — delivered as a video walkthrough and written scorecard in 5–7 business days.</p>
+    <p class="lede">A fast, honest read on your profile and content: the 6P Scorecard, a bio teardown and rewrite, and the 3 fixes to make first, delivered as a video walkthrough and written scorecard in 5–7 business days.</p>
     <div class="hero-ctas">
       <a class="btn btn-fill" href="#contact">Book Your Quick Audit</a>
       <a class="btn btn-outline" href="#included">See What's Included</a>
@@ -301,7 +313,7 @@
     <div class="offer-grid">
       <div class="offer-item">
         <h4>6P Scorecard</h4>
-        <p>Six checks — who this is for, what problem you solve, what you promise, what proves it, how the offer is presented, and whether your profile itself converts. Each one scored Active, Weak, or Missing, with the fix named.</p>
+        <p>Six checks: who this is for, what problem you solve, what you promise, what proves it, how the offer is presented, and whether your profile itself converts. Each one scored Active, Weak, or Missing, with the fix named.</p>
       </div>
       <div class="offer-item">
         <h4>Bio Teardown + Rewrite</h4>
