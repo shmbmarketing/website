@@ -208,7 +208,18 @@
   }
   .pp-grid .section-lede { margin-bottom: 0; }
   @media (max-width: 640px) {
-    .pp-grid { grid-template-columns: 1fr; gap: 48px; }
+    .pp-grid {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 20px;
+      padding-bottom: 10px;
+      scrollbar-width: none;
+    }
+    .pp-grid::-webkit-scrollbar { display: none; }
+    .pp-grid > div { flex: 0 0 85%; scroll-snap-align: center; }
   }
 
   /* ---------- OFFER SNAPSHOT ---------- */
@@ -375,7 +386,6 @@
       <p class="snapshot-price">$147</p>
       <div class="snapshot-ctas">
         <a class="btn btn-fill" href="audit.html#contact">Book Your Quick Audit</a>
-        <a class="btn btn-outline" href="audit.html#included">See Everything Included</a>
       </div>
     </div>
   </div>
